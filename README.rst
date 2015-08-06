@@ -611,6 +611,11 @@ Choose from the list of available fixers:
                         $strict param. Warning! This
                         could change code behavior.
 
+* **uppercase_constants** [contrib]
+                        The PHP constants TRUE, FALSE,
+                        and NULL MUST be in UPPER
+                        case.
+
 
 The ``--config`` option customizes the files to analyse, based
 on some well-known directory structures:
