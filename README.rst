@@ -529,6 +529,11 @@ Choose from the list of available fixers:
                         Add, replace or remove header
                         comment.
 
+* **lines_between_methods** [contrib]
+                        There MUST be exactly one
+                        empty line between methods in
+                        class/interface/trait.
+
 * **logical_not_operators_with_spaces** [contrib]
                         Logical NOT operators (!)
                         should have leading and
