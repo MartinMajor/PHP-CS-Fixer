@@ -611,6 +611,11 @@ Choose from the list of available fixers:
                         $strict param. Warning! This
                         could change code behavior.
 
+* **tabs_indentation** [contrib]
+                        Code MUST use an indent of
+                        tabs, and MUST NOT use spaces
+                        for indenting.
+
 
 The ``--config`` option customizes the files to analyse, based
 on some well-known directory structures:
