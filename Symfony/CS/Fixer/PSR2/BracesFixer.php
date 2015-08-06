@@ -277,15 +277,10 @@ final class BracesFixer extends AbstractFixer
             if (isset($tokens[$startBraceIndex + 2]) && $tokens[$startBraceIndex + 2]->equals('}')) {
                 $tokens->ensureWhitespaceAtIndex($startBraceIndex + 1, 0, "\n".$indent);
             } elseif (!$tokens[$index]->isClassy()) {
-                $nextToken = $tokens[$startBraceIndex + 1];
                 $nextNonWhitespaceToken = $tokens[$tokens->getNextNonWhitespace($startBraceIndex)];
 
-                // set indent only if it is not a case, when comment is following { in same line
-                if (
-                    !$nextNonWhitespaceToken->isComment()
-                    || !($nextToken->isWhitespace() && $nextToken->isWhitespace(" \t"))
-                    && substr_count($nextToken->getContent(), "\n") === 1 // preserve blank lines
-                ) {
+                // set indent only if it is not a case, when comment is following {
+                if (!$nextNonWhitespaceToken->isComment()) {
                     $tokens->ensureWhitespaceAtIndex($startBraceIndex + 1, 0, "\n".$indent.'    ');
                 }
             } else {
@@ -295,14 +290,7 @@ final class BracesFixer extends AbstractFixer
             if ($token->isGivenKind($classyTokens)) {
                 $tokens->ensureWhitespaceAtIndex($startBraceIndex - 1, 1, "\n".$indent);
             } elseif ($token->isGivenKind(T_FUNCTION)) {
-                $closingParenthesisIndex = $tokens->getPrevTokenOfKind($startBraceIndex, array(')'));
-                $prevToken = $tokens[$closingParenthesisIndex - 1];
-
-                if ($prevToken->isWhitespace() && false !== strpos($prevToken->getContent(), "\n")) {
-                    $tokens->ensureWhitespaceAtIndex($startBraceIndex - 1, 1, ' ');
-                } else {
-                    $tokens->ensureWhitespaceAtIndex($startBraceIndex - 1, 1, "\n".$indent);
-                }
+                $tokens->ensureWhitespaceAtIndex($startBraceIndex - 1, 1, "\n".$indent);
             } else {
                 $tokens->ensureWhitespaceAtIndex($startBraceIndex - 1, 1, ' ');
             }
@@ -424,7 +412,7 @@ final class BracesFixer extends AbstractFixer
 
         $explodedContent = explode("\n", $prevToken->getContent());
 
-        // proper decect indent for code: `    } else {`
+        // proper detect indent for code: `    } else {`
         if (1 === count($explodedContent)) {
             if ($tokens[$index - 2]->equals('}')) {
                 return $this->detectIndent($tokens, $index - 2);
