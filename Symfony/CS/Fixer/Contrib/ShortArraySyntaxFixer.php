@@ -43,6 +43,11 @@ final class ShortArraySyntaxFixer extends AbstractFixer
 
             $token->clear();
 
+            // delete whitespace between array keyword and open parenthesis
+            if ($index + 1 < $openIndex && $tokens[$index + 1]->isWhitespace(" \t")) {
+                $tokens[$index + 1]->clear();
+            }
+
             $tokens->overrideAt($openIndex, array(CT_ARRAY_SQUARE_BRACE_OPEN, '['));
             $tokens->overrideAt($closeIndex, array(CT_ARRAY_SQUARE_BRACE_CLOSE, ']'));
         }
