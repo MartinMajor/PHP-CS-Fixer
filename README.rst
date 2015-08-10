@@ -611,6 +611,11 @@ Choose from the list of available fixers:
                         $strict param. Warning! This
                         could change code behavior.
 
+* **trim_array_access_spaces** [contrib]
+                        Arrays access should be
+                        formatted without leading or
+                        trailing spaces and tabs.
+
 
 The ``--config`` option customizes the files to analyse, based
 on some well-known directory structures:
