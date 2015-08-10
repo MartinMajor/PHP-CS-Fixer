@@ -621,6 +621,11 @@ Choose from the list of available fixers:
                         tabs, and MUST NOT use spaces
                         for indenting.
 
+* **trim_array_access_spaces** [contrib]
+                        Arrays access should be
+                        formatted without leading or
+                        trailing spaces and tabs.
+
 * **uppercase_constants** [contrib]
                         The PHP constants TRUE, FALSE,
                         and NULL MUST be in UPPER
