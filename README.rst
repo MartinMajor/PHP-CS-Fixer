@@ -646,6 +646,8 @@ Choose from the list of available configurations:
 
 * **magento** The configuration for a Magento application
 
+* **sbks**    The configuration for a SBKS application
+
 * **sf23**    The configuration for the Symfony 2.3+ branch
 
 The ``--dry-run`` option displays the files that need to be

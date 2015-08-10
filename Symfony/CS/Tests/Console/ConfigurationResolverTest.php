@@ -373,6 +373,7 @@ class ConfigurationResolverTest extends \PHPUnit_Framework_TestCase
         return array(
             array('\\Symfony\\CS\\Config\\Config', 'default'),
             array('\\Symfony\\CS\\Config\\MagentoConfig', 'magento'),
+            array('\\Symfony\\CS\\Config\\SbksConfig', 'sbks'),
             array('\\Symfony\\CS\\Config\\Symfony23Config', 'sf23'),
         );
     }
